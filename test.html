@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalan Test Case Sayısı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .counter-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .counter {
+            font-size: 48px;
+            color: #333;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter-container">
+        <h1>Kalan Test Case Sayısı</h1>
+        <div class="counter" id="counter">18</div>
+        <button onclick="decreaseCounter()">Test Case Tamamlandı</button>
+    </div>
+
+    <script>
+        let testCaseCount = 18; // Test case sayısı başlangıç değeri
+
+        function decreaseCounter() {
+            if (testCaseCount > 0) {
+                testCaseCount--;
+                document.getElementById('counter').innerText = testCaseCount;
+            }
+        }
+    </script>
+</body>
+</html>
