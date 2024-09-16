@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalan Test Case Sayısı</title>
+    <title>Test Case Durumu</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +15,7 @@
             background-color: #f0f0f0;
         }
 
-        .counter-container {
+        .container {
             background-color: white;
             padding: 20px;
             border-radius: 10px;
@@ -23,13 +23,14 @@
             text-align: center;
         }
 
-        .counter {
+        .counter, .stuck-counter {
             font-size: 48px;
             color: #333;
+            margin-bottom: 10px;
         }
 
         button {
-            margin-top: 20px;
+            margin: 10px;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -42,22 +43,62 @@
         button:hover {
             background-color: #0056b3;
         }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .stuck-section {
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
-    <div class="counter-container">
+    <div class="container">
         <h1>Kalan Test Case Sayısı</h1>
         <div class="counter" id="counter">18</div>
-        <button onclick="decreaseCounter()">Test Case Tamamlandı</button>
+        <button onclick="decreaseCounter()">Çok şükür 1 adet daha TC tamamlandı</button>
+        <button onclick="increaseCounter()">Pardon tamamlanmamış</button>
+
+        <div class="stuck-section">
+            <h1>Stuck Kalan Test Case Sayısı</h1>
+            <div class="stuck-counter" id="stuckCounter">0</div>
+            <button onclick="increaseStuck()">Sorun var</button>
+            <button onclick="decreaseStuck()">Sorun çözüldü</button>
+        </div>
     </div>
 
     <script>
-        let testCaseCount = 18; // Test case sayısı başlangıç değeri
+        // Test case sayıları için başlangıç değerleri
+        let testCaseCount = 18;
+        let stuckCaseCount = 0;
 
+        // Kalan test case sayısını azaltma
         function decreaseCounter() {
             if (testCaseCount > 0) {
                 testCaseCount--;
                 document.getElementById('counter').innerText = testCaseCount;
+            }
+        }
+
+        // Kalan test case sayısını artırma (Pardon tamamlanmamış)
+        function increaseCounter() {
+            testCaseCount++;
+            document.getElementById('counter').innerText = testCaseCount;
+        }
+
+        // Stuck kalan test case sayısını artırma (Sorun var)
+        function increaseStuck() {
+            stuckCaseCount++;
+            document.getElementById('stuckCounter').innerText = stuckCaseCount;
+        }
+
+        // Stuck kalan test case sayısını azaltma (Sorun çözüldü)
+        function decreaseStuck() {
+            if (stuckCaseCount > 0) {
+                stuckCaseCount--;
+                document.getElementById('stuckCounter').innerText = stuckCaseCount;
             }
         }
     </script>
